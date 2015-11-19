@@ -1,0 +1,63 @@
+---
+title: ''
+author: ''
+date: ''
+output:
+  html_document:
+    theme: cosmo
+  pdf_document: default
+  word_document: default
+---
+
+
+<center><h4>Collin J. Schwantes<center></h4><h6>
+2500 Wisconsin Ave NW #754 Washington D.C., 20007  
+262-398-8518 | Collin.Schwantes[at]colorado.edu | www.CollinSchwantes.com 
+</h6></center>  
+
+####Summary
+Technically savvy scientist with a record of fluidly working on multiple large projects. Understands how to leverage data into products and productivity. Incorporates office administrative skills to organize, schedule, and communicate effectively. 
+
+----------------------              -------------------------      ------------
+Research                            Communication                  Programming
+----------------------              -------------------------      ------------
+Regression analyses                 Data Visualization             R
+
+Database management                 Map production                 Model Builder
+
+Data quality control                Web Applications               MySQL
+
+Reference Management tools          Spanish - *fluent*             GIT          
+----------------------              -------------------------      ------------
+
+####Professional Experience  
+**GIS Specialist and Spatial Analyst** - *University of Colorado Museum of Natural History* - *Boulder, Colorado*  
+*2015-Present*  
+
+- Developed and am implementing an open research plan for a multi-year citizen science project using open databases, R, and GIThub to transparently study the relationship between urban land-use and bee diversity in multiple cities. 
+- Created a web application that allows citizen scientists to explore bee diveristy data    
+
+**Research Assistant** - *University of Colorado Boulder* - *Boulder, Colorado*  
+*2013-2015*  
+
+- Collected, integrated, and analyzed biological data, remotely sensed agricultral data, and infrastructure data in R and ArcGIS while managing and mentoring undergraduate research technicians.     
+- Presented data at professional conferences and created figures for USDA reports
+
+**Research Technician** - *University of Wisconsin Madison* - *Madison, Wisconsin*  
+*2008-2013*  
+
+- Conducted site selection and landcover data extractions in ArcGIS for Department of Energy funded research
+- Trained graduate students and visiting academics in using ArcGIS 
+- Assisted with data entry and the creation of safety compliance matierals 
+
+
+####Education
+**Master of Arts Ecology and Evolutionary Biology**  
+University of Colorado Boulder - 2013-2015  
+
+**Bachelor of Science Evolutionary Biology, Spanish Linguistics, Zoology**  
+University of Wisconsin Madison - 2006-2011
+
+
+
+ 
