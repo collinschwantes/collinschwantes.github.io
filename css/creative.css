@@ -55,6 +55,13 @@ p {
     background-color: #f05f40;
 }
 
+.bg-primary a:link{
+    color: #e6e6e6;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
 .bg-dark {
     color: #fff;
     background-color: #222;
