@@ -10,45 +10,75 @@ output:
 ---
 
 
-<center><h4>Collin J. Schwantes<center></h4><h6>
-2500 Wisconsin Ave NW #754 Washington D.C., 20007  
-262-398-8518 | Collin.Schwantes[at]colorado.edu | www.CollinSchwantes.com 
+<center><h4>Collin J. Schwantes<center></h4><h6> 
 </h6></center>  
 
 ####Summary
-Technically savvy scientist with a record of fluidly working on multiple large projects. Understands how to leverage data into products and productivity. Incorporates office administrative skills to organize, schedule, and communicate effectively. 
+Technically savvy scientist with a record of fluidly working on multiple large projects. Understands how to turn data into insight and productivity. 
 
 ----------------------              -------------------------      ------------
 Research                            Communication                  Programming
 ----------------------              -------------------------      ------------
-Regression analyses                 Data Visualization             R
+Biological Systems Modeling         Data Visualization             R
 
-Database management                 Map production                 Model Builder
+Data Integration.                   Map production                 SQL
 
-Data quality control                Web Applications               MySQL
+Data quality control                Web Applications               GIT
 
-Reference Management tools          Spanish - *fluent*             GIT          
+Knowledge management tools          Spanish - *fluent*             Docker          
 ----------------------              -------------------------      ------------
 
 ####Professional Experience  
-**GIS Specialist and Spatial Analyst** - *University of Colorado Museum of Natural History* - *Boulder, Colorado*  
-*2015-Present*  
+**Data Librarian** - *EcoHealth Alliance* - *New York, New York*
+*2021-Present*
+  
+- Provide strategic and technical guidance on data management and workflows at the project and organizational level. 
+- Develop software to automate and standardize data workflows. 
+- Create and maintain resources that capture and dissemenate institutional knowledge.    
 
-- Developed and am implementing an open research plan for a multi-year citizen science project using open databases, R, and GIThub to transparently study the relationship between urban land-use and bee diversity in multiple cities. 
-- Created a web application that allows citizen scientists to explore bee diveristy data    
+**Data Scientist** - *Accenture Federal Services* - *Washington, D.C.*
+*2019-2021*
+
+- Data Science Craft lead. Help data scientists within the Discovery Lab thrive by connecting them with resources, building best practices, and creating a supportive research community.
+- Lead COVID-19 modeling efforts. Develop and deploy near real time forecasting models, phase classification algorithms based on CDC guidance, and a network based COVID-19 office simulation. These products provided essential information via cloud based solutions to leadership at three major government agencies and two fortune 500 companies.
+- Data visualization expert who uses human centered design techniques to generate insightful and ergonomic tools for exploring data.
+- Developed an R-python hybrid application to improve search results and usability of contracting documents with completeness and quality issues. The application uses a semantic search based on the BERT algorithm and a graph database to overcome the inconsistencies in the underlying documents.
+- Lead Graph Analytics Community of Interest. Build and nurture expertise in graph analytics with colleagues across Accenture Federal Services.
+  
+**Biosurveillance Scientist** - *Accenture Federal Services* - *Washington D.C* 
+*2016-Present*
+- Champion reproducible research best practices.
+- Lead geospatial analysis efforts, train team members to use GIS systems, and provide subject matter expertise on geospatial data standards to ensure interoperability of systems developed by the client.
+- Write flexible programs in to parse unstructured or semi-structured text and image based data for use in analyses. This improves reproducibility of analyses, facilitates data sharing, and reduces person hours dedicated to data entry.
+Produce data visualizations used in in-depth reports, communications materials, and congressional/leadership briefings.
+
+**Application Developer** - *Free Lance* - *Washington D.C.* 
+*2015-2018*
+  
+- Developed web-based interactive graphical user interface for vector control optimization models with clients at the University of Maryland using R Shiny.
+- Developed an interactive map of peace projects across Latin America (currently focused on México) for a graduate student at Georgetown University’s School of Foreign Service.
+- Developed python applications for automating image processing tasks for the Smithsonian National Museum of Natural History Entomology Department. These significantly reduced transcription error rates and the processing time per-specimen.  
+  
+**GIS Specialist and Spatial Analyst** - *University of Colorado Museum of Natural History* - *Boulder, Colorado*  
+*2015*  
+
+- Developed and began implementation of an open research plan for a multi-year citizen science project using open databases, R, and GitHub to transparently study the relationship between urban land-use and bee diversity in the Front Range of Colorado.
+- Created a web application that allows 500+ citizen scientists and interested members of the public to explore bee diversity data.  
 
 **Research Assistant** - *University of Colorado Boulder* - *Boulder, Colorado*  
 *2013-2015*  
 
-- Collected, integrated, and analyzed biological data, remotely sensed agricultral data, and infrastructure data in R and ArcGIS while managing and mentoring undergraduate research technicians.     
-- Presented data at professional conferences and created figures for USDA reports
+- Collected, integrated, and analyzed biological data, remotely sensed agricultural data, and infrastructure data in R and ArcGIS while managing and mentoring 10 undergraduate research technicians.
+- Presented data at four professional conferences and created figures for USDA reports.
+- Created fully digitized collection of over 20,000 insects.
 
 **Research Technician** - *University of Wisconsin Madison* - *Madison, Wisconsin*  
 *2008-2013*  
 
-- Conducted site selection and landcover data extractions in ArcGIS for Department of Energy funded research
-- Trained graduate students and visiting academics in using ArcGIS 
-- Assisted with data entry and the creation of safety compliance matierals 
+- Conducted site selection and landcover data extractions in ArcGIS for Department of Energy funded research.
+- Trained graduate students and visiting academics in using ArcGIS. 
+- Led field research teams from 2010-2013.
+- Assisted with data entry and the creation of safety compliance matierals.
 
 
 ####Education
@@ -58,6 +88,23 @@ University of Colorado Boulder - 2013-2015
 **Bachelor of Science Evolutionary Biology, Spanish Linguistics, Zoology**  
 University of Wisconsin Madison - 2006-2011
 
+####Professional Certifications
+**ICAgile Certified Professional**
+Accenture Agile Institute - 2016
+  
+  
+####Publications
 
+Baker, Heather, Asher Grady, Collin Schwantes, Emily Iarocci, Rachel Campbell, Gus Calapristi, Scott Dowson, Michelle Hart, Lauren E Charles, and Teresa Quitugua. 2018. “NBIC Biofeeds: Deploying a New, Digital Tool for Open Source Biosurveillance Across Federal Agencies.” Online Journal of Public Health Informatics 10 (1).
 
+Carper, Adrian L, Collin J Schwantes, Stacy B Endriss, Andrew P Norton, M Deane Bowers, and Mary A Jamieson. 2017.
+“Exploring Variation in Local and Landscape Factors Driving Grassland Bee Communities in Colorado.” In 2017 Esa Annual Meeting (August 6–11). ESA.
+
+Carper, Adrian L, Collin J Schwantes, and Mary A Jamieson. 2019. “A New State Record of the Rare Bee, Cemolobus Ipomoeae (Hymenoptera, Apidae), from Colorado, Usa.” Journal of the Kansas Entomological Society 91 (2): 171–75.
+
+Iarocci, Emily, Collin Schwantes, Anne Folley, Chandra Lesniak, Tiana Garrett-Cherry, and Teresa Quitugua. 2018. “NBIC Collaboration at Multiple Jurisdictional Levels During the Zika Epidemic.” Online Journal of Public Health Informatics 10 (1).
+
+Schwantes, Collin J, Adrian L Carper, and M Deane Bowers. 2018. “Solitary Floral Specialists Do Not Respond to Cryptic Flower-Occupying Predators.” Journal of Insect Behavior 31 (6): 642–55.
+
+Talamas, Elijah J, Joseph Thompson, Amy Cutler, Samantha Fitzsimmons Schoenberger, Anthony Cuminale, Trenton Jung, Norman F Johnson, et al. 2017. “An Online Photographic Catalog of Primary Types of Platygastroidea (Hymenoptera) in the National Museum of Natural History, Smithsonian Institution.” Journal of Hymenoptera Research 56: 187.
  
