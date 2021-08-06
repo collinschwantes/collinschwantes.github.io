@@ -13,7 +13,7 @@ output:
 <center><h4>Collin J. Schwantes<center></h4><h6> 
 </h6></center>  
 
-####Summary
+#### Summary
 Technically savvy scientist with a record of fluidly working on multiple large projects. Understands how to turn data into insight and productivity. 
 
 ----------------------              -------------------------      ------------
@@ -28,15 +28,15 @@ Data quality control                Web Applications               GIT
 Knowledge management tools          Spanish - *fluent*             Docker          
 ----------------------              -------------------------      ------------
 
-####Professional Experience  
-**Data Librarian** - *EcoHealth Alliance* - *New York, New York*
+#### Professional Experience  
+**Data Librarian** - *EcoHealth Alliance* - *New York, New York*  
 *2021-Present*
   
 - Provide strategic and technical guidance on data management and workflows at the project and organizational level. 
 - Develop software to automate and standardize data workflows. 
 - Create and maintain resources that capture and dissemenate institutional knowledge.    
 
-**Data Scientist** - *Accenture Federal Services* - *Washington, D.C.*
+**Data Scientist** - *Accenture Federal Services* - *Washington, D.C.*  
 *2019-2021*
 
 - Data Science Craft lead. Help data scientists within the Discovery Lab thrive by connecting them with resources, building best practices, and creating a supportive research community.
@@ -45,14 +45,15 @@ Knowledge management tools          Spanish - *fluent*             Docker
 - Developed an R-python hybrid application to improve search results and usability of contracting documents with completeness and quality issues. The application uses a semantic search based on the BERT algorithm and a graph database to overcome the inconsistencies in the underlying documents.
 - Lead Graph Analytics Community of Interest. Build and nurture expertise in graph analytics with colleagues across Accenture Federal Services.
   
-**Biosurveillance Scientist** - *Accenture Federal Services* - *Washington D.C* 
+**Biosurveillance Scientist** - *Accenture Federal Services* - *Washington D.C*   
 *2016-Present*
+
 - Champion reproducible research best practices.
 - Lead geospatial analysis efforts, train team members to use GIS systems, and provide subject matter expertise on geospatial data standards to ensure interoperability of systems developed by the client.
 - Write flexible programs in to parse unstructured or semi-structured text and image based data for use in analyses. This improves reproducibility of analyses, facilitates data sharing, and reduces person hours dedicated to data entry.
 Produce data visualizations used in in-depth reports, communications materials, and congressional/leadership briefings.
 
-**Application Developer** - *Free Lance* - *Washington D.C.* 
+**Application Developer** - *Free Lance* - *Washington D.C.*   
 *2015-2018*
   
 - Developed web-based interactive graphical user interface for vector control optimization models with clients at the University of Maryland using R Shiny.
@@ -81,19 +82,19 @@ Produce data visualizations used in in-depth reports, communications materials, 
 - Assisted with data entry and the creation of safety compliance matierals.
 
 
-####Education
+#### Education
 **Master of Arts Ecology and Evolutionary Biology**  
 University of Colorado Boulder - 2013-2015  
 
 **Bachelor of Science Evolutionary Biology, Spanish Linguistics, Zoology**  
 University of Wisconsin Madison - 2006-2011
 
-####Professional Certifications
-**ICAgile Certified Professional**
+#### Professional Certifications
+**ICAgile Certified Professional**  
 Accenture Agile Institute - 2016
   
   
-####Publications
+#### Publications
 
 Baker, Heather, Asher Grady, Collin Schwantes, Emily Iarocci, Rachel Campbell, Gus Calapristi, Scott Dowson, Michelle Hart, Lauren E Charles, and Teresa Quitugua. 2018. “NBIC Biofeeds: Deploying a New, Digital Tool for Open Source Biosurveillance Across Federal Agencies.” Online Journal of Public Health Informatics 10 (1).
 
