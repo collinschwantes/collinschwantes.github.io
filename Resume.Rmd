@@ -34,7 +34,7 @@ Knowledge management tools          Spanish - *fluent*             Docker
   
 - Provide strategic and technical guidance on data management and workflows at the project and organizational level. 
 - Develop software to automate and standardize data workflows. 
-- Create and maintain resources that capture and dissemenate institutional knowledge.    
+- Create and maintain resources that capture and disseminate institutional knowledge.    
 
 **Data Scientist** - *Accenture Federal Services* - *Washington, D.C.*  
 *2019-2021*
@@ -79,7 +79,7 @@ Produce data visualizations used in in-depth reports, communications materials, 
 - Conducted site selection and landcover data extractions in ArcGIS for Department of Energy funded research.
 - Trained graduate students and visiting academics in using ArcGIS. 
 - Led field research teams from 2010-2013.
-- Assisted with data entry and the creation of safety compliance matierals.
+- Assisted with data entry and the creation of safety compliance materials.
 
 
 #### Education
