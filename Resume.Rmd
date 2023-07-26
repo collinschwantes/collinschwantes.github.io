@@ -21,7 +21,7 @@ Research                            Communication                  Programming
 ----------------------              -------------------------      ------------
 Biological Systems Modeling         Data Visualization             R
 
-Data Integration.                   Map production                 SQL
+Data Integration.                   Map production                 JS
 
 Data quality control                Web Applications               GIT
 
@@ -93,8 +93,9 @@ University of Wisconsin Madison - 2006-2011
 **ICAgile Certified Professional**  
 Accenture Agile Institute - 2016
   
-  
 #### Publications
+
+D. Heymann, C. Schwantes, V. Pavon-Harr and I. McCulloh, "Methods in Constrained Community Detection: An Integer Optimization Model and Heuristic Approach for Cohort Creation," 2021 Eighth International Conference on Social Network Analysis, Management and Security (SNAMS), Gandia, Spain, 2021, pp. 1-8, doi: 10.1109/SNAMS53716.2021.9732140.
 
 Baker, Heather, Asher Grady, Collin Schwantes, Emily Iarocci, Rachel Campbell, Gus Calapristi, Scott Dowson, Michelle Hart, Lauren E Charles, and Teresa Quitugua. 2018. “NBIC Biofeeds: Deploying a New, Digital Tool for Open Source Biosurveillance Across Federal Agencies.” Online Journal of Public Health Informatics 10 (1).
 
