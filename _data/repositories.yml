@@ -1,14 +1,14 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - collinschwantes
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - ecohealthalliance/building-blocks-of-reproducibility
+  - ecohealthalliance/airtabler
+  - ecohealthalliance/ohcleandat
+  - ecohealthalliance/eha-ma-handbook
+  - ecohealthalliance/containerTemplateUtils
+  - collinschwantes/MosquitoApp
+  - collinschwantes/Annotated_Ultras
+  - collinschwantes/Bees-Needs-App
