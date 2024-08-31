@@ -1,9 +1,9 @@
 ---
 layout: page
-title: project 3 with very long name
-description: a project that redirects to another website
-img: assets/img/7.jpg
-redirect: https://unsplash.com
+title: Working Group on NIH DMSP Guidance
+description: OSF project page for NIH DMSP WG Guidance
+img:
+redirect: https://osf.io/uadxr/
 importance: 3
 category: work
 ---
