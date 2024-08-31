@@ -50,9 +50,6 @@ After spending the night in Ariel's friend's aunt's house we headed up to Valle 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/obligatory_stop.HEIC" title="quesos chela" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/back_garden.HEIC" title="back garden" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
@@ -60,6 +57,9 @@ After spending the night in Ariel's friend's aunt's house we headed up to Valle 
     </div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/sancocho.HEIC" title="soup" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/patacones.HEIC" title="soup" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -113,4 +113,29 @@ Ariel's wife Hannah shuttled us back to the apartment we were staying and strong
 
 The next day, my last non-travel day, we headed back up to the Valle de Anton for a "recovery hike" - not a thing. It was gorgeous. We saw two sloths and did some intense scrambles. Going downhill was much harder than going uphill. When we got back to the apartment we went for a swim in the ocean then had a pingpong tournament after a fantastic dinner. 
 
-The following moring I said good-bye to everyone then Ariel got me on a bus that would get me to the metro that took me to the airport. It went very smoothly. A+ trains in Panama City that take you right to the airport. 
+<div class="row justify-content-sm-center">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/reto_del_indio/hike1.HEIC" title="definitely melted while running" class="img-fluid rounded z-depth-1" %}
+  </div>
+    <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/reto_del_indio/hike2.HEIC" title="not dead after race" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/reto_del_indio/hike3.HEIC" title="post race massage" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+
+<div class="row justify-content-sm-center">
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/reto_del_indio/hike_flower.HEIC" title="definitely melted while running" class="img-fluid rounded z-depth-1" %}
+  </div>
+    <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/reto_del_indio/sloth_1.HEIC" title="not dead after race" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/reto_del_indio/hike_rohan.HEIC" title="post race massage" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+
+
+The following moring I said good-bye to everyone then Ariel got me on a bus that would get me to the metro that took me to the airport. It went very smoothly. A+ trains in Panama City that take you right to the airport. I arrived to with plenty of time to reflect on all the wonderful aspects of the trip - the food, the people, the coffee, the race, the "recovery hike" -  such an amazing time and I'm so thankful Ariel convinced me to go. 
