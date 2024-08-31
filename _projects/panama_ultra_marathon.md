@@ -22,16 +22,16 @@ Turns out training to run very long distances takes a lot of time. I'm very grat
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/trianing_antigua.HEIC" title="training in Antigua Guatemala" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/trianing_antigua.jpg" title="training in Antigua Guatemala" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/trianing_newyork.HEIC" title="training new york city" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/trianing_newyork.jpg" title="training new york city" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/trianing_tepoz_tepozteco.HEIC" title="descending the tepozteco" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/trianing_tepoz_tepozteco.jpg" title="descending the tepozteco" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/trianing_tepoz_tree.HEIC" title="tree in tepoz" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/trianing_tepoz_tree.jpg" title="tree in tepoz" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -41,7 +41,7 @@ I arrived at the airport, found my friends, and stepped out in the Panamanian he
 
 <div class="row justify-content-sm-center">
   <div class="col-sm-12 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/sushi.HEIC" title="boats of sushi" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/sushi.jpg" title="boats of sushi" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
@@ -50,16 +50,16 @@ After spending the night in Ariel's friend's aunt's house we headed up to Valle 
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/back_garden.HEIC" title="back garden" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/back_garden.jpg" title="back garden" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/strategizing.HEIC" title="talking shop" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/strategizing.jpg" title="talking shop" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/sancocho.HEIC" title="soup" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/sancocho.jpg" title="soup" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/patacones.HEIC" title="soup" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/reto_del_indio/patacones.jpg" title="soup" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
@@ -74,7 +74,7 @@ The farther down we got the drier it was. We tranisitioned from upland cloud for
 
 <div class="row justify-content-sm-center">
   <div class="col-sm-12 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/midrace_hot.HEIC" title="in the infernillo" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/midrace_hot.jpg" title="in the infernillo" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
@@ -89,13 +89,13 @@ cheered me on.
 
 <div class="row justify-content-sm-center">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/finish_hot.HEIC" title="definitely melted while running" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/finish_hot.PNG" title="definitely melted while running" class="img-fluid rounded z-depth-1" %}
   </div>
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/finish_high_five.HEIC" title="not dead after race" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/finish_high_five.PNG" title="not dead after race" class="img-fluid rounded z-depth-1" %}
   </div>
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/post_race_massage.HEIC" title="post race massage" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/post_race_massage.jpg" title="post race massage" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
@@ -105,7 +105,7 @@ Davis was the next one to arrive, then Ariel, and finally Jonathan. Davis also s
 
 <div class="row justify-content-sm-center">
   <div class="col-sm-12 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/group_pic.HEIC" title="group_picture" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/group_pic.jpg" title="group_picture" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
@@ -115,25 +115,25 @@ The next day, my last non-travel day, we headed back up to the Valle de Anton fo
 
 <div class="row justify-content-sm-center">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/hike1.HEIC" title="definitely melted while running" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/hike1.jpg" title="definitely melted while running" class="img-fluid rounded z-depth-1" %}
   </div>
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/hike2.HEIC" title="not dead after race" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/hike2.jpg" title="not dead after race" class="img-fluid rounded z-depth-1" %}
   </div>
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/hike3.HEIC" title="post race massage" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/hike3.jpg" title="post race massage" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
 <div class="row justify-content-sm-center">
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/hike_flower.HEIC" title="definitely melted while running" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/hike_flower.jpg" title="definitely melted while running" class="img-fluid rounded z-depth-1" %}
   </div>
     <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/sloth_1.HEIC" title="not dead after race" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/sloth_1.jpg" title="not dead after race" class="img-fluid rounded z-depth-1" %}
   </div>
   <div class="col-sm mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/reto_del_indio/hike_rohan.HEIC" title="post race massage" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid path="assets/img/reto_del_indio/hike_rohan.jpg" title="post race massage" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
