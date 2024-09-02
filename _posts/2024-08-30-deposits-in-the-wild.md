@@ -4,6 +4,7 @@ title: Deposits in the Wild
 date: 2024-08-30 17:39:00
 tags: deposits zenodo FAIR data
 description: A blog post about using the R package deposits
+featured: true
 mermaid:
   enabled: true
   zoomable: true
