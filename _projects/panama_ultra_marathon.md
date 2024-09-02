@@ -5,6 +5,7 @@ description: I've never cried tears of joy after finishing a run - I did this ti
 img: assets/img/valle_de_anton.JPG
 importance: 3
 category: fun
+related_publications: true
 ---
 
 I'd never cried tears of joy after finishing a run until I finished the Reto del Indio. 

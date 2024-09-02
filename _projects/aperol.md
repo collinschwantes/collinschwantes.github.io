@@ -7,6 +7,7 @@ importance: 2
 category: fun
 redirect: https://github.com/EllaKaye/aperol 
 giscus_comments: false
+related_publications: true
 ---
 
 
