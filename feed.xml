@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://collinschwantes.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://collinschwantes.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-09-02T21:49:04+00:00</updated><id>https://collinschwantes.github.io/feed.xml</id><title type="html">blank</title><subtitle>a personal website for Collin Schwantes </subtitle><entry><title type="html">Deposits in the Wild</title><link href="https://collinschwantes.github.io/blog/2024/deposits-in-the-wild/" rel="alternate" type="text/html" title="Deposits in the Wild"/><published>2024-08-30T17:39:00+00:00</published><updated>2024-08-30T17:39:00+00:00</updated><id>https://collinschwantes.github.io/blog/2024/deposits-in-the-wild</id><content type="html" xml:base="https://collinschwantes.github.io/blog/2024/deposits-in-the-wild/"><![CDATA[<p>For the better part of a year, I have been looking for an opportunity to use the ROpenSci package <a href="https://docs.ropensci.org/deposits/">{deposits}</a> in my role as the Data Librarian at EcoHealth Alliance. I had done some initial testing with the Mark Padgham, the brilliant person who developed this package, but there weren’t any projects ready for me to put {deposits} through its paces. Enter the <code class="language-plaintext highlighter-rouge">Rift Valley Fever Virus</code> project, a ten year, multiple part study of humans, wildlife (mosquitos and wild ungulates), and domestic animals that uses every data store from dropbox to google drive to airtable to odk with a healthy mix file formats for tabular data. Whatsmore, the PIs on the project are very enthusaistic about making the data FAIR.</p> <p>The team and I put together workflow in <a href="https://books.ropensci.org/targets/">{targets}</a> with the mechanics of ETL largely handled by our <a href="https://ecohealthalliance.github.io/ohcleandat/">{ohcleandat}</a> package. The underlaying philosophy of the ETL process is the original data are only lightly modified (stripping white spaces, column names to snake case, etc) while humans do any cleaning that requires thought via validation logs. Changes made in logs are then applied to the data before they are integrated into various larger workpackages. Those workpackages are then deposited into Zenodo to create versioned single sources of truth with digital object identifiers.</p> <pre><code class="language-mermaid">flowchart LR
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://collinschwantes.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://collinschwantes.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-09-02T21:58:04+00:00</updated><id>https://collinschwantes.github.io/feed.xml</id><title type="html">blank</title><subtitle>a personal website for Collin Schwantes </subtitle><entry><title type="html">Deposits in the Wild</title><link href="https://collinschwantes.github.io/blog/2024/deposits-in-the-wild/" rel="alternate" type="text/html" title="Deposits in the Wild"/><published>2024-08-30T17:39:00+00:00</published><updated>2024-08-30T17:39:00+00:00</updated><id>https://collinschwantes.github.io/blog/2024/deposits-in-the-wild</id><content type="html" xml:base="https://collinschwantes.github.io/blog/2024/deposits-in-the-wild/"><![CDATA[<p>For the better part of a year, I have been looking for an opportunity to use the ROpenSci package <a href="https://docs.ropensci.org/deposits/">{deposits}</a> in my role as the Data Librarian at EcoHealth Alliance. I had done some initial testing with the Mark Padgham, the brilliant person who developed this package, but there weren’t any projects ready for me to put {deposits} through its paces. Enter the <code class="language-plaintext highlighter-rouge">Rift Valley Fever Virus</code> project, a ten year, multiple part study of humans, wildlife (mosquitos and wild ungulates), and domestic animals that uses every data store from dropbox to google drive to airtable to odk with a healthy mix file formats for tabular data. Whatsmore, the PIs on the project are very enthusaistic about making the data FAIR.</p> <p>The team and I put together workflow in <a href="https://books.ropensci.org/targets/">{targets}</a> with the mechanics of ETL largely handled by our <a href="https://ecohealthalliance.github.io/ohcleandat/">{ohcleandat}</a> package. The underlaying philosophy of the ETL process is the original data are only lightly modified (stripping white spaces, column names to snake case, etc) while humans do any cleaning that requires thought via validation logs. Changes made in logs are then applied to the data before they are integrated into various larger workpackages. Those workpackages are then deposited into Zenodo to create versioned single sources of truth with digital object identifiers.</p> <pre><code class="language-mermaid">flowchart LR
     A[Dropbox] --&gt; E(ETL in targets with ohcleandat)
     B[GoogleDrive] --&gt; E
     C[Airtable] --&gt; E
@@ -17,147 +17,154 @@
     B[Creator Metadata CSV] --&gt; G
     C[ Data Files]  --&gt; G
     G --&gt; H{Zenodo}
-</code></pre> <p><code class="language-plaintext highlighter-rouge">deposits_metadata.csv</code></p> <table> <thead> <tr> <th>title</th> <th>format</th> <th>created</th> <th>creator</th> <th>files</th> <th>…</th> </tr> </thead> <tbody> <tr> <td>Work package 1</td> <td>dataset</td> <td>2024-09-01</td> <td>“Collin, Mindy, Johana”</td> <td>“dat1.csv,dat2.csv”</td> <td>…</td> </tr> </tbody> </table> <p>Each row in <code class="language-plaintext highlighter-rouge">deposits_metadata.csv</code> corresponds to a work package - a collection of data files that will become a deposit. The PIs on the project requested access to raw, semi-clean, and clean versions of the data. They also provided lists of who should be credited for what and who should have access to what. Unfortunately in Zenodo you cannot restrict access to specific files like you can in OSF, so a different deposit has to be made for each group that needs access.</p> <p>We then map over each row in the dataset in {targets} using <a href="https://docs.ropensci.org/targets/reference/tar_group.html">the group iterator</a> to create the draft deposits that we need. The <code class="language-plaintext highlighter-rouge">depositClient</code> plays very nicely with targets, and can even be tar_loaded when you need to interactively debug.</p> <p>Another important component of our workflow is generating codebooks/data dictionaries/structural metadata for the different work packages. By default, {deposits} creates a {frictionless} data pacakge that describes all the files/resources in a deposit. The <code class="language-plaintext highlighter-rouge">datapackage.json</code> file contains a minimal description of the different files that contains the field name and field type. We can augment this with field descriptions, term URIs, or any number of additional attributes that would helpful when describing the data. To do this, we use <code class="language-plaintext highlighter-rouge">ohcleandat::create_structural_metadata</code> and <code class="language-plaintext highlighter-rouge">ohcleandat::update_structural_metadata</code> to create/update the codebooks then <code class="language-plaintext highlighter-rouge">ohcleandat::expand_frictionless_metadata()</code> to add those elements to <code class="language-plaintext highlighter-rouge">datapackage.json</code>. Because each deposit contains multiple data files and multuple codebook files, we have to iteratvely <code class="language-plaintext highlighter-rouge">purrr::walk</code> over them to properly update the data.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#' purrr::walk over ohcleandat::expand_frictionless_metadata
-#'
-#' @param file_paths List with the elements data and codebook
-#'
-#' @return Invisible. writes updated datapackage.json
-#' @export
-#'
-#' @examples
-walk_expand_frictionless_metadata &lt;- function(file_paths,dir_path){
-  purrr::walk2(file_paths$codebook,file_paths$data,function(codebook_path,data_path){
-    if(is.na(codebook_path)){
-      msg &lt;- sprintf("No codebook listed for %s",data_path)
-      return(NA)
-    }
+</code></pre> <p><code class="language-plaintext highlighter-rouge">deposits_metadata.csv</code></p> <hr/> <p>|title | format |created |creator | files |…| |——|———|———|———|———|—-| |Work package 1| dataset| 2024-09-01| “Collin, Mindy, Johana” | “dat1.csv,dat2.csv”| …| ***</p> <p>Each row in <code class="language-plaintext highlighter-rouge">deposits_metadata.csv</code> corresponds to a work package - a collection of data files that will become a deposit. The PIs on the project requested access to raw, semi-clean, and clean versions of the data. They also provided lists of who should be credited for what and who should have access to what. Unfortunately in Zenodo you cannot restrict access to specific files like you can in OSF, so a different deposit has to be made for each group that needs access.</p> <p>We then map over each row in the dataset in {targets} using <a href="https://docs.ropensci.org/targets/reference/tar_group.html">the group iterator</a> to create the draft deposits that we need. The <code class="language-plaintext highlighter-rouge">depositClient</code> plays very nicely with targets, and can even be tar_loaded when you need to interactively debug.</p> <p>Another important component of our workflow is generating codebooks/data dictionaries/structural metadata for the different work packages. By default, {deposits} creates a {frictionless} data pacakge that describes all the files/resources in a deposit. The <code class="language-plaintext highlighter-rouge">datapackage.json</code> file contains a minimal description of the different files that contains the field name and field type. We can augment this with field descriptions, term URIs, or any number of additional attributes that would helpful when describing the data. To do this, we use <code class="language-plaintext highlighter-rouge">ohcleandat::create_structural_metadata</code> and <code class="language-plaintext highlighter-rouge">ohcleandat::update_structural_metadata</code> to create/update the codebooks then <code class="language-plaintext highlighter-rouge">ohcleandat::expand_frictionless_metadata()</code> to add those elements to <code class="language-plaintext highlighter-rouge">datapackage.json</code>. Because each deposit contains multiple data files and multuple codebook files, we have to iteratvely <code class="language-plaintext highlighter-rouge">purrr::walk</code> over them to properly update the data.</p> <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cd">#' purrr::walk over ohcleandat::expand_frictionless_metadata</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' @param file_paths List with the elements data and codebook</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' @return Invisible. writes updated datapackage.json</span><span class="w">
+</span><span class="cd">#' @export</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' @examples</span><span class="w">
+</span><span class="n">walk_expand_frictionless_metadata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">file_paths</span><span class="p">,</span><span class="n">dir_path</span><span class="p">){</span><span class="w">
+  </span><span class="n">purrr</span><span class="o">::</span><span class="n">walk2</span><span class="p">(</span><span class="n">file_paths</span><span class="o">$</span><span class="n">codebook</span><span class="p">,</span><span class="n">file_paths</span><span class="o">$</span><span class="n">data</span><span class="p">,</span><span class="k">function</span><span class="p">(</span><span class="n">codebook_path</span><span class="p">,</span><span class="n">data_path</span><span class="p">){</span><span class="w">
+    </span><span class="k">if</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">codebook_path</span><span class="p">)){</span><span class="w">
+      </span><span class="n">msg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sprintf</span><span class="p">(</span><span class="s2">"No codebook listed for %s"</span><span class="p">,</span><span class="n">data_path</span><span class="p">)</span><span class="w">
+      </span><span class="nf">return</span><span class="p">(</span><span class="kc">NA</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
     
-    codebook_df &lt;- readr::read_csv(file = codebook_path)
-    ## check dataset_name matches resource_name
-    resource_name&lt;- get_resource_name(data_path)
+    </span><span class="n">codebook_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">readr</span><span class="o">::</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codebook_path</span><span class="p">)</span><span class="w">
+    </span><span class="c1">## check dataset_name matches resource_name</span><span class="w">
+    </span><span class="n">resource_name</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">get_resource_name</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span><span class="w">
     
-    if(unique(codebook_df$dataset_name) != resource_name){
-      msg&lt;- sprintf("resource_name and dataset_name do not match. 
+    </span><span class="k">if</span><span class="p">(</span><span class="n">unique</span><span class="p">(</span><span class="n">codebook_df</span><span class="o">$</span><span class="n">dataset_name</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">resource_name</span><span class="p">){</span><span class="w">
+      </span><span class="n">msg</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sprintf</span><span class="p">(</span><span class="s2">"resource_name and dataset_name do not match. 
 
 Check that the proper name was added to the codebook and that
 the files are in the proper order in deposits_metadata.csv. 
 resource_name is taken from the file name for a given dataset.
 
-%s != %s",
-                    resource_name, unique(codebook_df$dataset_name) )
+%s != %s"</span><span class="p">,</span><span class="w">
+                    </span><span class="n">resource_name</span><span class="p">,</span><span class="w"> </span><span class="n">unique</span><span class="p">(</span><span class="n">codebook_df</span><span class="o">$</span><span class="n">dataset_name</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w">
       
-      stop(msg)
-    }
+      </span><span class="n">stop</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
     
-    data_package_path &lt;- sprintf("%s/datapackage.json",dir_path)
+    </span><span class="n">data_package_path</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sprintf</span><span class="p">(</span><span class="s2">"%s/datapackage.json"</span><span class="p">,</span><span class="n">dir_path</span><span class="p">)</span><span class="w">
     
     
-    ohcleandat::expand_frictionless_metadata(structural_metadata = codebook_df,
-                                             resource_name = resource_name, # name of the file with no extension
-                                             resource_path = data_path,
-                                             data_package_path = data_package_path)
-  })
-}
-</code></pre></div></div> <p>When we go to add this updated <code class="language-plaintext highlighter-rouge">datapackage.json</code> file to the deposit, the order of operations matters. If we are creating an item, the function might look like this:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#' Create Zenodo Deposit and Expand Metadata
-#'
-#' @param cli deposits client
-#' @param metadata_dcmi_complete list of DCMI metadata terms
-#' @param file_paths paths to data files
-#' @param dir_path path to directory where workpackage files are stored locally
-#'
-#' @return updated deposits client
-#' @export
-#'
-#' @examples
-create_zenodo_deposit &lt;- function(cli,metadata_dcmi_complete, file_paths,dir_path){
+    </span><span class="n">ohcleandat</span><span class="o">::</span><span class="n">expand_frictionless_metadata</span><span class="p">(</span><span class="n">structural_metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codebook_df</span><span class="p">,</span><span class="w">
+                                             </span><span class="n">resource_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">resource_name</span><span class="p">,</span><span class="w"> </span><span class="c1"># name of the file with no extension</span><span class="w">
+                                             </span><span class="n">resource_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data_path</span><span class="p">,</span><span class="w">
+                                             </span><span class="n">data_package_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data_package_path</span><span class="p">)</span><span class="w">
+  </span><span class="p">})</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div> <p>When we go to add this updated <code class="language-plaintext highlighter-rouge">datapackage.json</code> file to the deposit, the order of operations matters. If we are creating an item, the function might look like this:</p> <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cd">#' Create Zenodo Deposit and Expand Metadata</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' @param cli deposits client</span><span class="w">
+</span><span class="cd">#' @param metadata_dcmi_complete list of DCMI metadata terms</span><span class="w">
+</span><span class="cd">#' @param file_paths paths to data files</span><span class="w">
+</span><span class="cd">#' @param dir_path path to directory where workpackage files are stored locally</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' @return updated deposits client</span><span class="w">
+</span><span class="cd">#' @export</span><span class="w">
+</span><span class="cd">#'</span><span class="w">
+</span><span class="cd">#' @examples</span><span class="w">
+</span><span class="n">create_zenodo_deposit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span><span class="n">metadata_dcmi_complete</span><span class="p">,</span><span class="w"> </span><span class="n">file_paths</span><span class="p">,</span><span class="n">dir_path</span><span class="p">){</span><span class="w">
   
   
-  ## populate descriptive metadata for zenodo
+  </span><span class="c1">## populate descriptive metadata for zenodo</span><span class="w">
 
-  cli$deposit_fill_metadata(metadata = metadata_dcmi_complete)
+  </span><span class="n">cli</span><span class="o">$</span><span class="n">deposit_fill_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata_dcmi_complete</span><span class="p">)</span><span class="w">
   
-  cli$deposit_new(prereserve_doi = TRUE)
+  </span><span class="n">cli</span><span class="o">$</span><span class="n">deposit_new</span><span class="p">(</span><span class="n">prereserve_doi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
   
-  ## add resources - adds everything in dir_path
-  cli$deposit_add_resource(path = dir_path)
+  </span><span class="c1">## add resources - adds everything in dir_path</span><span class="w">
+  </span><span class="n">cli</span><span class="o">$</span><span class="n">deposit_add_resource</span><span class="p">(</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir_path</span><span class="p">)</span><span class="w">
 
-  #upload files  
-  cli$deposit_upload_file(path = dir_path)
+  </span><span class="c1">#upload files  </span><span class="w">
+  </span><span class="n">cli</span><span class="o">$</span><span class="n">deposit_upload_file</span><span class="p">(</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir_path</span><span class="p">)</span><span class="w">
   
-  # expand structural metadata
-  walk_expand_frictionless_metadata(file_paths,dir_path)
+  </span><span class="c1"># expand structural metadata</span><span class="w">
+  </span><span class="n">walk_expand_frictionless_metadata</span><span class="p">(</span><span class="n">file_paths</span><span class="p">,</span><span class="n">dir_path</span><span class="p">)</span><span class="w">
   
-  # update structural metadata - has to be done in this order or datapackage.json is re-written on upload
+  </span><span class="c1"># update structural metadata - has to be done in this order or datapackage.json is re-written on upload</span><span class="w">
   
-  cli$deposit_update(path = dir_path)
+  </span><span class="n">cli</span><span class="o">$</span><span class="n">deposit_update</span><span class="p">(</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir_path</span><span class="p">)</span><span class="w">
   
-  return(cli)
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">cli</span><span class="p">)</span><span class="w">
   
-}
+</span><span class="p">}</span><span class="w">
   
-</code></pre></div></div> <p>and updating a deposit might look something like:</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-update_zenodo_deposit &lt;- function(cli, deposit_id ,metadata_dcmi_complete, file_paths, dir_path){
-  
-  
-  ## retrieve the deposit
-  cli$deposit_retrieve(as.integer(deposit_id))
-  
-  # update deposit metadata
-  cli$deposit_fill_metadata(metadata = metadata_dcmi_complete)
-  
-  ## expand metadata
-  walk_expand_frictionless_metadata(file_paths,dir_path)
+</span></code></pre></div></div> <p>and updating a deposit might look something like:</p> <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">
+</span><span class="n">update_zenodo_deposit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span><span class="w"> </span><span class="n">deposit_id</span><span class="w"> </span><span class="p">,</span><span class="n">metadata_dcmi_complete</span><span class="p">,</span><span class="w"> </span><span class="n">file_paths</span><span class="p">,</span><span class="w"> </span><span class="n">dir_path</span><span class="p">){</span><span class="w">
   
   
-  ## update the deposit
-  cli$deposit_update(path = dir_path)
+  </span><span class="c1">## retrieve the deposit</span><span class="w">
+  </span><span class="n">cli</span><span class="o">$</span><span class="n">deposit_retrieve</span><span class="p">(</span><span class="nf">as.integer</span><span class="p">(</span><span class="n">deposit_id</span><span class="p">))</span><span class="w">
+  
+  </span><span class="c1"># update deposit metadata</span><span class="w">
+  </span><span class="n">cli</span><span class="o">$</span><span class="n">deposit_fill_metadata</span><span class="p">(</span><span class="n">metadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">metadata_dcmi_complete</span><span class="p">)</span><span class="w">
+  
+  </span><span class="c1">## expand metadata</span><span class="w">
+  </span><span class="n">walk_expand_frictionless_metadata</span><span class="p">(</span><span class="n">file_paths</span><span class="p">,</span><span class="n">dir_path</span><span class="p">)</span><span class="w">
+  
+  
+  </span><span class="c1">## update the deposit</span><span class="w">
+  </span><span class="n">cli</span><span class="o">$</span><span class="n">deposit_update</span><span class="p">(</span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dir_path</span><span class="p">)</span><span class="w">
   
 
-  return(cli)
-}
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">cli</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-</code></pre></div></div> <p>We can even keep our <code class="language-plaintext highlighter-rouge">deposits_metadata.csv</code> file updated using the <code class="language-plaintext highlighter-rouge">depositClient</code>.</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#' Update deposits metadata
-#' 
-#' Find workpackage titles that match deposit titles 
-#' 
-#' @param cli deposits Client
-#' @param metadata_formatted dataframe of formatted descriptive metadata
-#' @return
-#' @author Collin Schwantes
-#' @export
-update_zenodo_metadata &lt;- function(cli, metadata_formatted) {
+</span></code></pre></div></div> <p>We can even keep our <code class="language-plaintext highlighter-rouge">deposits_metadata.csv</code> file updated using the <code class="language-plaintext highlighter-rouge">depositClient</code>.</p> <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cd">#' Update deposits metadata</span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' Find workpackage titles that match deposit titles </span><span class="w">
+</span><span class="cd">#' </span><span class="w">
+</span><span class="cd">#' @param cli deposits Client</span><span class="w">
+</span><span class="cd">#' @param metadata_formatted dataframe of formatted descriptive metadata</span><span class="w">
+</span><span class="cd">#' @return</span><span class="w">
+</span><span class="cd">#' @author Collin Schwantes</span><span class="w">
+</span><span class="cd">#' @export</span><span class="w">
+</span><span class="n">update_zenodo_metadata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">cli</span><span class="p">,</span><span class="w"> </span><span class="n">metadata_formatted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 
-  df_doi_id &lt;- purrr::map_df(metadata_formatted$title , function(x){
+  </span><span class="n">df_doi_id</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">purrr</span><span class="o">::</span><span class="n">map_df</span><span class="p">(</span><span class="n">metadata_formatted</span><span class="o">$</span><span class="n">title</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
         
-      df &lt;- data.frame(identifier = NA_character_, deposit_id = NA_character_)
+      </span><span class="n">df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA_character_</span><span class="p">,</span><span class="w"> </span><span class="n">deposit_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NA_character_</span><span class="p">)</span><span class="w">
     
-      deposits_found &lt;- cli$deposits |&gt;
-      dplyr::filter(title == x) |&gt; 
-      dplyr::select(title, id, doi)
+      </span><span class="n">deposits_found</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">cli</span><span class="o">$</span><span class="n">deposits</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">
+      </span><span class="n">dplyr</span><span class="o">::</span><span class="n">filter</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> 
+      </span><span class="n">dplyr</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">doi</span><span class="p">)</span><span class="w">
     
-    if(nrow(deposits_found) == 0){
-      message("No matching items found")
-      return(df)
-    }
+    </span><span class="k">if</span><span class="p">(</span><span class="n">nrow</span><span class="p">(</span><span class="n">deposits_found</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="p">){</span><span class="w">
+      </span><span class="n">message</span><span class="p">(</span><span class="s2">"No matching items found"</span><span class="p">)</span><span class="w">
+      </span><span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
       
-    if(nrow(deposits_found) &gt; 1){
-      warning("clean up your deposits?")
-      return(df)
-    }
+    </span><span class="k">if</span><span class="p">(</span><span class="n">nrow</span><span class="p">(</span><span class="n">deposits_found</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">1</span><span class="p">){</span><span class="w">
+      </span><span class="n">warning</span><span class="p">(</span><span class="s2">"clean up your deposits?"</span><span class="p">)</span><span class="w">
+      </span><span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
       
-      df$identifier &lt;- as.character(deposits_found$doi)
-      df$deposit_id &lt;- as.character(deposits_found$id)
+      </span><span class="n">df</span><span class="o">$</span><span class="n">identifier</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">deposits_found</span><span class="o">$</span><span class="n">doi</span><span class="p">)</span><span class="w">
+      </span><span class="n">df</span><span class="o">$</span><span class="n">deposit_id</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">deposits_found</span><span class="o">$</span><span class="n">id</span><span class="p">)</span><span class="w">
     
-      return(df)
-  })
+      </span><span class="nf">return</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w">
+  </span><span class="p">})</span><span class="w">
   
   
-  metadata_formatted$identifier&lt;- df_doi_id$identifier
-  metadata_formatted$deposit_id&lt;- df_doi_id$deposit_id
+  </span><span class="n">metadata_formatted</span><span class="o">$</span><span class="n">identifier</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df_doi_id</span><span class="o">$</span><span class="n">identifier</span><span class="w">
+  </span><span class="n">metadata_formatted</span><span class="o">$</span><span class="n">deposit_id</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df_doi_id</span><span class="o">$</span><span class="n">deposit_id</span><span class="w">
 
-  return(metadata_formatted)
-}
-</code></pre></div></div> <p>We can create many deposits with good descriptive metadata, extend the structural metadata, and keep out deposits_metadata.csv up to date using {deposits}, {ohcleandat}, and a little {dplyr}.</p> <h2 id="potential-pain-points">Potential pain points</h2> <p>1) Some of the more complex DCMI terms require nested lists with very particular structures. This can be hard to reason about if you’re not super familiar with <a href="https://eloquentjavascript.net/04_data.html">JSON</a> or how the <a href="https://arxiv.org/abs/1403.2805">{jsonlite}</a> package converts json to R objects. Mark provides good examples of constructing the <code class="language-plaintext highlighter-rouge">creator</code> objects in the deposits documentation. Even if you are a JSON wizard, the <a href="https://developers.zenodo.org/#entities">entities documentation</a> in the Zenodo API is super helpful.<br/> 2) Metadata errors can feel a little cryptic until you get a better understanding of [JSON validation]{https://cran.rstudio.com/web/packages/jsonvalidate/vignettes/jsonvalidate.html} and stare at the [{deposits json schema}(https://github.com/ropenscilabs/deposits/blob/main/inst/extdata/dc/schema.json) for a minute or two. 3) Collaboration can be challenging because drafts have to be manually shared in Zenodo. <code class="language-plaintext highlighter-rouge">¯\_(ツ)_/¯</code>.</p> <h2 id="conclusions">Conclusions</h2> <p>We were able put the deposits package through the wringer with the RVF2 project and it performed extremely well. The {deposits} package is great for making and managing a collection of Zenodo deposits. It takes a second to get the hang of the <code class="language-plaintext highlighter-rouge">R6</code> object oriented structure and JSON data validation, but once you do, the thoughtful package design results in a smooth workflow whether you’re updating a single deposit or a large batch.</p>]]></content><author><name></name></author><category term="deposits"/><category term="zenodo"/><category term="FAIR"/><category term="data"/><summary type="html"><![CDATA[A blog post about using the R package deposits]]></summary></entry><entry><title type="html">a post with tabs</title><link href="https://collinschwantes.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="a post with tabs"/><published>2024-05-01T00:32:13+00:00</published><updated>2024-05-01T00:32:13+00:00</updated><id>https://collinschwantes.github.io/blog/2024/tabs</id><content type="html" xml:base="https://collinschwantes.github.io/blog/2024/tabs/"><![CDATA[<p>This is how a post with <a href="https://github.com/Ovski4/jekyll-tabs">tabs</a> looks like. Note that the tabs could be used for different purposes, not only for code.</p> <h2 id="first-tabs">First tabs</h2> <p>To add tabs, use the following syntax:</p> <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">tabs</span><span class="w"> </span><span class="nv">group-name</span><span class="w"> </span><span class="cp">%}</span>
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">metadata_formatted</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div> <p>We can create many deposits with good descriptive metadata, extend the structural metadata, and keep out deposits_metadata.csv up to date using {deposits}, {ohcleandat}, and a little {dplyr}.</p> <h2 id="potential-pain-points">Potential pain points</h2> <p>1) Some of the more complex DCMI terms require nested lists with very particular structures. This can be hard to reason about if you’re not super familiar with <a href="https://eloquentjavascript.net/04_data.html">JSON</a> or how the <a href="https://arxiv.org/abs/1403.2805">{jsonlite}</a> package converts json to R objects. Mark provides good examples of constructing the <code class="language-plaintext highlighter-rouge">creator</code> objects in the deposits documentation. Even if you are a JSON wizard, the <a href="https://developers.zenodo.org/#entities">entities documentation</a> in the Zenodo API is super helpful.<br/> 2) Metadata errors can feel a little cryptic until you get a better understanding of [JSON validation]{https://cran.rstudio.com/web/packages/jsonvalidate/vignettes/jsonvalidate.html} and stare at the [{deposits json schema}(https://github.com/ropenscilabs/deposits/blob/main/inst/extdata/dc/schema.json) for a minute or two. 3) Collaboration can be challenging because drafts have to be manually shared in Zenodo. <code class="language-plaintext highlighter-rouge">¯\_(ツ)_/¯</code>.</p> <h2 id="conclusions">Conclusions</h2> <p>We were able put the deposits package through the wringer with the RVF2 project and it performed extremely well. The {deposits} package is great for making and managing a collection of Zenodo deposits. It takes a second to get the hang of the <code class="language-plaintext highlighter-rouge">R6</code> object oriented structure and JSON data validation, but once you do, the thoughtful package design results in a smooth workflow whether you’re updating a single deposit or a large batch.</p> <pre><code class="language-mermaid">flowchart LR
+
+    A[Deposit Metadata CSV] --&gt; G(Prep for Archive in targets with deposits)
+    B[Creator Metadata CSV] --&gt; G
+    C[Workpackage Files]  --&gt; G
+    G --&gt; H{Zenodo}
+    G ---&gt; A
+</code></pre>]]></content><author><name></name></author><category term="deposits"/><category term="zenodo"/><category term="FAIR"/><category term="data"/><summary type="html"><![CDATA[A blog post about using the R package deposits]]></summary></entry><entry><title type="html">a post with tabs</title><link href="https://collinschwantes.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="a post with tabs"/><published>2024-05-01T00:32:13+00:00</published><updated>2024-05-01T00:32:13+00:00</updated><id>https://collinschwantes.github.io/blog/2024/tabs</id><content type="html" xml:base="https://collinschwantes.github.io/blog/2024/tabs/"><![CDATA[<p>This is how a post with <a href="https://github.com/Ovski4/jekyll-tabs">tabs</a> looks like. Note that the tabs could be used for different purposes, not only for code.</p> <h2 id="first-tabs">First tabs</h2> <p>To add tabs, use the following syntax:</p> <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">tabs</span><span class="w"> </span><span class="nv">group-name</span><span class="w"> </span><span class="cp">%}</span>
 
 <span class="cp">{%</span><span class="w"> </span><span class="nt">tab</span><span class="w"> </span><span class="nv">group-name</span><span class="w"> </span><span class="nv">tab-name-1</span><span class="w"> </span><span class="cp">%}</span>
 
@@ -172,16 +179,16 @@ Content 2
 <span class="cp">{%</span><span class="w"> </span><span class="nt">endtab</span><span class="w"> </span><span class="cp">%}</span>
 
 <span class="cp">{%</span><span class="w"> </span><span class="nt">endtabs</span><span class="w"> </span><span class="cp">%}</span>
-</code></pre></div></div> <p>With this you can generate visualizations like:</p> <ul id="log" class="tab" data-tab="f0fa4bb7-f391-4e33-873d-db13036b7189" data-name="log"> <li class="active" id="log-php"> <a href="#">php </a> </li> <li id="log-js"> <a href="#">js </a> </li> <li id="log-ruby"> <a href="#">ruby </a> </li> </ul> <ul class="tab-content" id="f0fa4bb7-f391-4e33-873d-db13036b7189" data-name="log"> <li class="active"> <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">var_dump</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">);</span>
+</code></pre></div></div> <p>With this you can generate visualizations like:</p> <ul id="log" class="tab" data-tab="0cbba7c6-894f-4290-948a-bd0729ed5539" data-name="log"> <li class="active" id="log-php"> <a href="#">php </a> </li> <li id="log-js"> <a href="#">js </a> </li> <li id="log-ruby"> <a href="#">ruby </a> </li> </ul> <ul class="tab-content" id="0cbba7c6-894f-4290-948a-bd0729ed5539" data-name="log"> <li class="active"> <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">var_dump</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">);</span>
 </code></pre></div></div> </li> <li> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div> </li> <li> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pputs</span> <span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span>
-</code></pre></div></div> </li> </ul> <h2 id="another-example">Another example</h2> <ul id="data-struct" class="tab" data-tab="f554cdf3-aaeb-4a33-b851-4ef41b4b5973" data-name="data-struct"> <li class="active" id="data-struct-yaml"> <a href="#">yaml </a> </li> <li id="data-struct-json"> <a href="#">json </a> </li> </ul> <ul class="tab-content" id="f554cdf3-aaeb-4a33-b851-4ef41b4b5973" data-name="data-struct"> <li class="active"> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hello</span><span class="pi">:</span>
+</code></pre></div></div> </li> </ul> <h2 id="another-example">Another example</h2> <ul id="data-struct" class="tab" data-tab="f84fd58e-a2af-4553-b1e6-d5f390136b16" data-name="data-struct"> <li class="active" id="data-struct-yaml"> <a href="#">yaml </a> </li> <li id="data-struct-json"> <a href="#">json </a> </li> </ul> <ul class="tab-content" id="f84fd58e-a2af-4553-b1e6-d5f390136b16" data-name="data-struct"> <li class="active"> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hello</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s2">"</span><span class="s">whatsup"</span>
   <span class="pi">-</span> <span class="s2">"</span><span class="s">hi"</span>
 </code></pre></div></div> </li> <li> <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"hello"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"whatsup"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hi"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div> </li> </ul> <h2 id="tabs-for-something-else">Tabs for something else</h2> <ul id="something-else" class="tab" data-tab="1be08b0d-1e75-4bf5-88d1-49ded8d881f2" data-name="something-else"> <li class="active" id="something-else-text"> <a href="#">text </a> </li> <li id="something-else-quote"> <a href="#">quote </a> </li> <li id="something-else-list"> <a href="#">list </a> </li> </ul> <ul class="tab-content" id="1be08b0d-1e75-4bf5-88d1-49ded8d881f2" data-name="something-else"> <li class="active"> <p>Regular text</p> </li> <li> <blockquote> <p>A quote</p> </blockquote> </li> <li> <p>Hipster list</p> <ul> <li>brunch</li> <li>fixie</li> <li>raybans</li> <li>messenger bag</li> </ul> </li> </ul>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[this is what included tabs in a post could look like]]></summary></entry><entry><title type="html">a post with typograms</title><link href="https://collinschwantes.github.io/blog/2024/typograms/" rel="alternate" type="text/html" title="a post with typograms"/><published>2024-04-29T23:36:10+00:00</published><updated>2024-04-29T23:36:10+00:00</updated><id>https://collinschwantes.github.io/blog/2024/typograms</id><content type="html" xml:base="https://collinschwantes.github.io/blog/2024/typograms/"><![CDATA[<p>This is an example post with some <a href="https://github.com/google/typograms/">typograms</a> code.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">typograms
+</span></code></pre></div></div> </li> </ul> <h2 id="tabs-for-something-else">Tabs for something else</h2> <ul id="something-else" class="tab" data-tab="40abac42-197d-448c-895a-7c4f4aa90623" data-name="something-else"> <li class="active" id="something-else-text"> <a href="#">text </a> </li> <li id="something-else-quote"> <a href="#">quote </a> </li> <li id="something-else-list"> <a href="#">list </a> </li> </ul> <ul class="tab-content" id="40abac42-197d-448c-895a-7c4f4aa90623" data-name="something-else"> <li class="active"> <p>Regular text</p> </li> <li> <blockquote> <p>A quote</p> </blockquote> </li> <li> <p>Hipster list</p> <ul> <li>brunch</li> <li>fixie</li> <li>raybans</li> <li>messenger bag</li> </ul> </li> </ul>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[this is what included tabs in a post could look like]]></summary></entry><entry><title type="html">a post with typograms</title><link href="https://collinschwantes.github.io/blog/2024/typograms/" rel="alternate" type="text/html" title="a post with typograms"/><published>2024-04-29T23:36:10+00:00</published><updated>2024-04-29T23:36:10+00:00</updated><id>https://collinschwantes.github.io/blog/2024/typograms</id><content type="html" xml:base="https://collinschwantes.github.io/blog/2024/typograms/"><![CDATA[<p>This is an example post with some <a href="https://github.com/google/typograms/">typograms</a> code.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">typograms
 </span><span class="sb">+----+
 |    |---&gt; My first diagram!
 +----+</span>
