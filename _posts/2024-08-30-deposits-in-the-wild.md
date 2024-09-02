@@ -67,9 +67,12 @@ flowchart LR
 
 `deposits_metadata.csv`
 
+***
 |title	| format	|created	|creator	| files   |...|
 |------|---------|---------|---------|---------|----|
 |Work package 1| dataset| 2024-09-01| "Collin, Mindy, Johana" | "dat1.csv,dat2.csv"| ...| 
+***
+  
 
 Each row in `deposits_metadata.csv` corresponds to a work package - a collection of data files that will become a deposit. The PIs on the project requested access to raw, semi-clean, and clean versions of the data. They also provided lists of who should be credited for what and who should have access to what. Unfortunately in Zenodo you cannot restrict access to specific files like you can in OSF, so a different deposit has to be made for each group that needs access. 
 
@@ -77,7 +80,7 @@ We then map over each row in the dataset in {targets} using [the group iterator]
 
 Another important component of our workflow is generating codebooks/data dictionaries/structural metadata for the different work packages. By default, {deposits} creates a {frictionless} data pacakge that describes all the files/resources in a deposit. The `datapackage.json` file contains a minimal description of the different files that contains the field name and field type. We can augment this with field descriptions, term URIs, or any number of additional attributes that would helpful when describing the data.  To do this, we use  `ohcleandat::create_structural_metadata` and `ohcleandat::update_structural_metadata` to create/update the codebooks then `ohcleandat::expand_frictionless_metadata()` to add those elements to `datapackage.json`. Because each deposit contains multiple data files and multuple codebook files, we have to iteratvely `purrr::walk` over them to properly update the data.
 
-```
+```R
 #' purrr::walk over ohcleandat::expand_frictionless_metadata
 #'
 #' @param file_paths List with the elements data and codebook
@@ -123,7 +126,7 @@ resource_name is taken from the file name for a given dataset.
 
 When we go to add this updated `datapackage.json` file to the deposit, the order of operations matters. If we are creating an item, the function might look like this:
 
-```
+```R
 #' Create Zenodo Deposit and Expand Metadata
 #'
 #' @param cli deposits client
@@ -165,7 +168,7 @@ create_zenodo_deposit <- function(cli,metadata_dcmi_complete, file_paths,dir_pat
 
 and updating a deposit might look something like:
 
-```
+```R
 
 update_zenodo_deposit <- function(cli, deposit_id ,metadata_dcmi_complete, file_paths, dir_path){
   
@@ -191,7 +194,7 @@ update_zenodo_deposit <- function(cli, deposit_id ,metadata_dcmi_complete, file_
 
 We can even keep our `deposits_metadata.csv` file updated using the `depositClient`.
 
-```
+```R
 #' Update deposits metadata
 #' 
 #' Find workpackage titles that match deposit titles 
@@ -247,3 +250,13 @@ the [entities documentation](https://developers.zenodo.org/#entities) in the Zen
 ## Conclusions
 
 We were able put the deposits package through the wringer with the RVF2 project and it performed extremely well. The {deposits} package is great for making and managing a collection of Zenodo deposits. It takes a second to get the hang of the `R6` object oriented structure and JSON data validation, but once you do, the thoughtful package design results in a smooth workflow whether you're updating a single deposit or a large batch.   
+
+```mermaid
+flowchart LR
+
+    A[Deposit Metadata CSV] --> G(Prep for Archive in targets with deposits)
+    B[Creator Metadata CSV] --> G
+    C[Workpackage Files]  --> G
+    G --> H{Zenodo}
+    G ---> A
+```
