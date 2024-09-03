@@ -244,7 +244,7 @@ We can create many deposits with good descriptive metadata, extend the structura
 
 1) Some of the more complex DCMI terms require nested lists with very particular structures. This can be hard to reason about if you're not super familiar with [JSON](https://eloquentjavascript.net/04_data.html) or how the [{jsonlite}](https://arxiv.org/abs/1403.2805) package converts json to R objects. Mark provides good examples of constructing the `creator` objects in the deposits documentation. Even if you are a JSON wizard,
 the [entities documentation](https://developers.zenodo.org/#entities) in the Zenodo API is super helpful.  
-2) Metadata errors can feel a little cryptic until you get a better understanding of [JSON validation](https://cran.rstudio.com/web/packages/jsonvalidate/vignettes/jsonvalidate.html) and stare at the [{deposits json schema}(https://github.com/ropenscilabs/deposits/blob/main/inst/extdata/dc/schema.json) for a minute or two. 
+2) Metadata errors can feel a little cryptic until you get a better understanding of [JSON validation](https://cran.rstudio.com/web/packages/jsonvalidate/vignettes/jsonvalidate.html) and stare at the [{deposits json schema}](https://github.com/ropenscilabs/deposits/blob/main/inst/extdata/dc/schema.json) for a minute or two. 
 3) Collaboration can be challenging because drafts have to be manually shared in Zenodo.  `¯\_(ツ)_/¯`. 
 
 
