@@ -2,11 +2,9 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
+      value: Collin J Schwantes
     - name: Languages
-      value: English, German
+      value: English, Spanish, R, Javascript, Python
 
 - title: Education
   type: time_table
