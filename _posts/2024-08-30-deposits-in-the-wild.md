@@ -10,6 +10,8 @@ mermaid:
   zoomable: true
 ---
 
+This blog post has been published on the [ROpenSci blog](https://ropensci.org/blog/2024/09/17/deposits-in-the-wild/)
+
 For the better part of a year, I have been looking for an opportunity to use the ROpenSci package [{deposits}](https://docs.ropensci.org/deposits/) in my
 role as the Data Librarian at EcoHealth Alliance.
 I had done some initial testing with the Mark Padgham, the brilliant person who developed this package, but there weren't any projects ready for me to put {deposits} through its paces.

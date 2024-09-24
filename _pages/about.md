@@ -12,9 +12,9 @@ profile:
     <p>Data Librarian</p>
     <p>EcoHealth Alliance</p>
 
-news: true # includes a list of news items
+news: false # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Ecologist turned data scientist who focuses on reproducible resesarch and semantic data. 
+Ecologist turned data scientist who focuses on reproducible research and semantic data. 
