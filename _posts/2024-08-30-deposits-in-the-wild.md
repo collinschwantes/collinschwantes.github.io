@@ -10,11 +10,18 @@ mermaid:
   zoomable: true
 ---
 
+This blog post has been published on the [ROpenSci blog](https://ropensci.org/blog/2024/09/17/deposits-in-the-wild/)
 
 For the better part of a year, I have been looking for an opportunity to use the ROpenSci package [{deposits}](https://docs.ropensci.org/deposits/) in my
-role as the Data Librarian at EcoHealth Alliance. I had done some initial testing with the Mark Padgham, the brilliant person who developed this package, but there weren't any projects ready for me to put {deposits} through its paces. Enter the `Rift Valley Fever Virus` project, a ten year, multiple part study of humans, wildlife (mosquitos and wild ungulates), and domestic animals that uses every data store from dropbox to google drive to Airtable to ODK with a healthy mix file formats for tabular data. Additionally, the PIs on the project are very enthusiastic about making the data FAIR.  
+role as the Data Librarian at EcoHealth Alliance.
+I had done some initial testing with the Mark Padgham, the brilliant person who developed this package, but there weren't any projects ready for me to put {deposits} through its paces.
+Enter the *Rift Valley Fever Virus in South Africa* project, a ten year, multiple part study of humans, wildlife (mosquitoes and wild ungulates), and domestic animals that uses every data store from dropbox to Google drive to Airtable to ODK with a healthy mix file formats for tabular data. 
+Additionally, the PIs on the project are very enthusiastic about making the data FAIR.  
 
-The team and I put together workflow in [{targets}](https://books.ropensci.org/targets/) with the mechanics of ETL largely handled by our [{ohcleandat}](https://ecohealthalliance.github.io/ohcleandat/) package. The underlying philosophy of the ETL process is the original data are only lightly modified (stripping white spaces, column names to snake case, etc) while humans do any cleaning that requires thought via validation logs. Changes made in logs are then applied to the data before they are integrated into various larger workpackages. Those workpackages are then deposited into Zenodo to create versioned single sources of truth with digital object identifiers. 
+The team and I put together workflow in [{targets}](https://books.ropensci.org/targets/) with the mechanics of ETL largely handled by our [{ohcleandat}](https://ecohealthalliance.github.io/ohcleandat/) package. 
+The underlying philosophy of the ETL process is the original data are only lightly modified (stripping white spaces, column names to snake case, etc) while humans do any cleaning that requires thought via validation logs. 
+Changes made in logs are then applied to the data before they are integrated into various larger workpackages. 
+Those workpackages are then deposited into Zenodo to create versioned single sources of truth with digital object identifiers. 
 
 
 ```mermaid
@@ -33,11 +40,15 @@ flowchart LR
 
 ## An abbreviated intro to {deposits} 
 
-The first thing you have to know about {deposits} is that it uses the R6 class. R6 is an object oriented framework where each class of object has a set of methods (functions) that can be applied to it. This is really nice because you can access all of the available methods of a `depositClient` object by using `cli$SOME_METHOD()` - where its less convenient for people who work in Rstudio is when you're looking for the help page for `SOME_METHOD` - instead you have to look for `depositClient` and scroll to the link to `SOME_METHOD`.
+The first thing you have to know about {deposits} is that it uses the R6 class. 
+R6 is an object oriented framework where each class of object has a set of methods (functions) that can be applied to it. 
+This is really nice because you can access all of the available methods of a `depositClient` object by using `cli$SOME_METHOD()` - where its less convenient for people who work in Rstudio is when you're looking for the help page for `SOME_METHOD` - instead you have to look for `depositClient` and scroll to the link to `SOME_METHOD`.
 
-The next kind of tricky thing is [adding api tokens to the environment](https://docs.ropensci.org/deposits/articles/install-setup.html#setup-api-tokens). This can be done in a number of different ways ([encrypted .env file](https://ecohealthalliance.github.io/eha-ma-handbook/16-encryption.html), [usethis::edit_r_environ](https://usethis.r-lib.org/reference/edit.html), etc) but is essential to using this package. Remember that these tokens are sensitive credentials and should not be openly shared.
+The next kind of tricky thing is [adding api tokens to the environment](https://docs.ropensci.org/deposits/articles/install-setup.html#setup-api-tokens). 
+This can be done in a number of different ways ([encrypted .env file](https://ecohealthalliance.github.io/eha-ma-handbook/16-encryption.html), [usethis::edit_r_environ](https://usethis.r-lib.org/reference/edit.html), etc) but is essential to using this package. Remember that these tokens are sensitive credentials and should not be openly shared.
 
-{deposits} works as an intermediary between a remote service ([Zenodo](https://zenodo.org/) or [Figshare](https://figshare.com/)) and your local machine. Via {deposits} you can create, read, update, or delete items on a remote service.    
+{deposits} works as an intermediary between a remote service ([Zenodo](https://zenodo.org/) or [Figshare](https://figshare.com/)) and your local machine. 
+Via {deposits} you can create, read, update, or delete items on a remote service.    
 
 
 ```mermaid
@@ -46,15 +57,19 @@ flowchart LR
     B <--> C[Zenodo/Figshare]
 ```     
 
-{deposits} allows you to pre-populate the metadata for those items. This is incredibly useful if you have to deposit many items with similar metadata, if you have highly collaborative items with dozens of co-authors/contributors, or if you want to update many items with the same bit of metadata. You might be asking yourself - do Zenodo and Figshare really use the same terms with the same properties in their APIs? The answer is no, but they both use flavors of [Dublin Core](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-1) that Mark has mapped to common standard. {deposits} uses JSON validation to enforce the standard and the package also provides a template properly formatted metadata. 
+{deposits} allows you to pre-populate the metadata for those items. This is incredibly useful if you have to deposit many items with similar metadata, if you have highly collaborative items with dozens of co-authors/contributors, or if you want to update many items with the same bit of metadata. 
+You might be asking yourself - do Zenodo and Figshare really use the same terms with the same properties in their APIs? The answer is no, but they both use flavors of [Dublin Core](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-1) that Mark has mapped to common standard. 
+{deposits} uses JSON validation to enforce the standard and the package also provides a template properly formatted metadata. 
 
-Finally, {deposits} allows you to push items to a service and publish them. On zenodo, you may push items up as embargoed or open (restricted is coming soon pending a pull request). 
+Finally, {deposits} allows you to push items to a service and publish them. 
+On zenodo, you may push items up as embargoed or open (restricted is coming soon pending a pull request). 
 
 ## What does our workflow look like?
 
-We created a `deposits_metadata.csv` that contains all of the DCMI terms we would like to pre-populate
-across ~35 zenodo deposits. Because certain DCMI terms like creator can have multiple attributes, we augmented the `deposits_metadata.csv` with a `creator_metadata.csv` file that contains additional terms. 
-I opted to use csv files because 1) they are very easy to maintain, 2) the are extremely interoperable, 3) we have a very limited number of tables. If there were additional tables to link or more complicated relationships I would use a relational database like MySQL (or Airtable).  
+We created a `deposits_metadata.csv` that contains all of the DCMI terms we would like to pre-populate across ~35 zenodo deposits.
+Because certain DCMI terms like creator can have multiple attributes, we augmented the `deposits_metadata.csv` with a `creator_metadata.csv` file that contains additional terms. 
+I opted to use csv files because 1) they are very easy to maintain, 2) the are extremely interoperable, 3) we have a very limited number of tables. 
+If there were additional tables to link or more complicated relationships I would use a relational database like MySQL (or Airtable).  
 
 
 ```mermaid
@@ -68,18 +83,27 @@ flowchart LR
 
 `deposits_metadata.csv`
 
-***
+
 |title	| format	|created	|creator	| files   |...|
 |------|---------|---------|---------|---------|----|
-|Work package 1| dataset| 2024-09-01| "Collin, Mindy, Johana" | "dat1.csv,dat2.csv"| ...| 
-***
+|Work package 1| dataset| 2024-09-01| "Collin, Mindy, Johana" | "dat1.csv, dat2.csv"| ...| 
+
   
 
-Each row in `deposits_metadata.csv` corresponds to a work package - a collection of data files that will become a deposit. The PIs on the project requested access to raw, semi-clean, and clean versions of the data. They also provided lists of who should be credited for what and who should have access to what. Unfortunately in Zenodo you cannot restrict access to specific files like you can in OSF, so a different deposit has to be made for each group that needs access. 
+Each row in `deposits_metadata.csv` corresponds to a work package - a collection of data files that will become a deposit. 
+The PIs on the project requested access to raw, semi-clean, and clean versions of the data. 
+They also provided lists of who should be credited for what and who should have access to what. 
+Unfortunately in Zenodo you cannot restrict access to specific files like you can in OSF, so a different deposit has to be made for each group that needs access. 
 
-We then map over each row in the dataset in {targets} using [the group iterator](https://docs.ropensci.org/targets/reference/tar_group.html) to create the draft deposits that we need. The `depositClient` plays very nicely with targets, and can even be tar_loaded when you need to interactively debug. 
+We then map over each row in the dataset in {targets} using [the group iterator](https://docs.ropensci.org/targets/reference/tar_group.html) to create the draft deposits that we need. 
+The `depositClient` plays very nicely with targets, and can even be tar_loaded when you need to interactively debug. 
 
-Another important component of our workflow is generating codebooks/data dictionaries/structural metadata for the different work packages. By default, {deposits} creates a {frictionless} data package that describes all the files/resources in a deposit. The `datapackage.json` file contains a minimal description of the different files that contains the field name and field type. We can augment this with field descriptions, term URIs, or any number of additional attributes that would helpful when describing the data.  To do this, we use  `ohcleandat::create_structural_metadata` and `ohcleandat::update_structural_metadata` to create/update the codebooks then `ohcleandat::expand_frictionless_metadata()` to add those elements to `datapackage.json`. Because each deposit contains multiple data files and multiple codebook files, we have to iteratively `purrr::walk` over them to properly update the data.
+Another important component of our workflow is generating codebooks/data dictionaries/structural metadata for the different work packages. 
+By default, {deposits} creates a {frictionless} data package that describes all the files/resources in a deposit. 
+The `datapackage.json` file contains a minimal description of the different files that contains the field name and field type. 
+We can augment this with field descriptions, term URIs, or any number of additional attributes that would helpful when describing the data.  
+To do this, we use  `ohcleandat::create_structural_metadata` and `ohcleandat::update_structural_metadata` to create/update the codebooks then `ohcleandat::expand_frictionless_metadata()` to add those elements to `datapackage.json`. 
+Because each deposit contains multiple data files and multiple codebook files, we have to iteratively `purrr::walk` over them to properly update the data.
 
 ```R
 #' purrr::walk over ohcleandat::expand_frictionless_metadata
@@ -125,7 +149,8 @@ resource_name is taken from the file name for a given dataset.
 }
 ```
 
-When we go to add this updated `datapackage.json` file to the deposit, the order of operations matters. If we are creating an item, the function might look like this:
+When we go to add this updated `datapackage.json` file to the deposit, the order of operations matters. 
+If we are creating an item, the function might look like this:
 
 ```R
 #' Create Zenodo Deposit and Expand Metadata
@@ -170,27 +195,37 @@ create_zenodo_deposit <- function(cli,metadata_dcmi_complete, file_paths,dir_pat
 and updating a deposit might look something like:
 
 ```R
-
-update_zenodo_deposit <- function(cli, deposit_id ,metadata_dcmi_complete, file_paths, dir_path){
+update_zenodo_deposit <- function(cli, metadata_updated,metadata_dcmi_complete, file_paths, dir_path){
   
   
   ## retrieve the deposit
-  cli$deposit_retrieve(as.integer(deposit_id))
+  print("getting deposit from id")
+  cli$deposit_retrieve(as.integer(metadata_updated$deposit_id))
   
-  # update deposit metadata
-  cli$deposit_fill_metadata(metadata = metadata_dcmi_complete)
+  data_package_path <- sprintf("%s/datapackage.json",dir_path)
+  
+  ## update descriptive metadata
+  ## don't need to walk over this because there is only one set of descriptive for the data package
+  ## metadata for the deposit
+  print("updating descriptive metadata")
+  ohcleandat::update_frictionless_metadata(descriptive_metadata = metadata_dcmi_complete,
+                                           data_package_path = data_package_path
+  )
+  
+  cli$deposit_fill_metadata(metadata_dcmi_complete)
   
   ## expand metadata
+  print("expanding metadata")
   walk_expand_frictionless_metadata(file_paths,dir_path)
   
-  
   ## update the deposit
-  cli$deposit_update(path = dir_path)
+  print("updating deposit")
+  cli$deposit_upload_file(path = dir_path)
   
-
+  
+  print("returning cli")
   return(cli)
 }
-
 ```
 
 We can even keep our `deposits_metadata.csv` file updated using the `depositClient`.
@@ -242,7 +277,10 @@ We can create many deposits with good descriptive metadata, extend the structura
 
 ## Potential pain points
 
-1) Some of the more complex DCMI terms require nested lists with very particular structures. This can be hard to reason about if you're not super familiar with [JSON](https://eloquentjavascript.net/04_data.html) or how the [{jsonlite}](https://arxiv.org/abs/1403.2805) package converts json to R objects. Mark provides good examples of constructing the `creator` objects in the deposits documentation. Even if you are a JSON wizard,
+1) Some of the more complex DCMI terms require nested lists with very particular structures. 
+This can be hard to reason about if you're not super familiar with [JSON](https://eloquentjavascript.net/04_data.html) or how the [{jsonlite}](https://arxiv.org/abs/1403.2805) package converts json to R objects. 
+Mark provides good examples of constructing the `creator` objects in the deposits documentation. 
+Even if you are a JSON wizard,
 the [entities documentation](https://developers.zenodo.org/#entities) in the Zenodo API is super helpful.  
 2) Metadata errors can feel a little cryptic until you get a better understanding of [JSON validation](https://cran.rstudio.com/web/packages/jsonvalidate/vignettes/jsonvalidate.html) and stare at the [{deposits json schema}](https://github.com/ropenscilabs/deposits/blob/main/inst/extdata/dc/schema.json) for a minute or two. 
 3) Collaboration can be challenging because drafts have to be manually shared in Zenodo.  `¯\_(ツ)_/¯`. 
@@ -250,7 +288,9 @@ the [entities documentation](https://developers.zenodo.org/#entities) in the Zen
 
 ## Conclusions
 
-We were able put the deposits package through the wringer with the RVF2 project and it performed extremely well. The {deposits} package is great for making and managing a collection of Zenodo deposits. It takes a second to get the hang of the `R6` object oriented structure and JSON data validation, but once you do, the thoughtful package design results in a smooth workflow whether you're updating a single deposit or a large batch.   
+We were able put the deposits package through the wringer with the RVF2 project and it performed extremely well.
+The {deposits} package is great for making and managing a collection of Zenodo deposits.
+It takes a second to get the hang of the `R6` object oriented structure and JSON data validation, but once you do, the thoughtful package design results in a smooth workflow whether you're updating a single deposit or a large batch.   
 
 ```mermaid
 flowchart LR
