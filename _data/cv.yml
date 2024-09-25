@@ -2,6 +2,16 @@
   type: map
   contents:
     - name: Full Name
+      value: Albert Einstein
+    - name: Date of Birth
+      value: 14th March 1879
+    - name: Languages
+      value: English, German
+
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
       value: Collin J Schwantes
     - name: Languages
       value: English, Spanish, R, Javascript, Python
@@ -93,4 +103,4 @@
 - title: Other Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Trail Running, Mountain Biking, Backcountry Snowboarding, Cooking, Gardening.
+    - <u>Hobbies:</u> Trail Running, Mountain Biking, Backcountry Snowboarding, Cooking, Gardening,.
