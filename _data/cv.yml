@@ -2,36 +2,10 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
-
-- title: General Information
-  type: map
-  contents:
-    - name: Full Name
       value: Collin J Schwantes
     - name: Languages
       value: English, Spanish, R, Javascript, Python
 
-- title: Education
-  type: time_table
-  contents:
-    - title: Master's Degree in Ecology and Evolutionary Biology
-      institution: University of Colorado-Boulder
-      year: 2015
-      description:
-        - Studied the impacts of Biofuel policy on native bee species using methods from community and landscape ecology
-        - Investigated foraging behaviors of native bee species in an experimental garden. 
-        - https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/q524jp117
-    - title: Bachelor of Science
-      institution: University of Wisconsin-Madison
-      year: 2011
-      description:
-        - Majored in Zoology, Evolutionary Biology, and Spanish
-  
 - title: Experience
   type: time_table
   contents:
@@ -83,6 +57,23 @@
         - Created a web application that allows 500+ citizen scientists and interested members of the public to explore bee diversity data.
 
 
+- title: Education
+  type: time_table
+  contents:
+    - title: Master's Degree in Ecology and Evolutionary Biology
+      institution: University of Colorado-Boulder
+      year: 2015
+      description:
+        - Studied the impacts of Biofuel policy on native bee species using methods from community and landscape ecology
+        - Investigated foraging behaviors of native bee species in an experimental garden. 
+        - https://scholar.colorado.edu/concern/graduate_thesis_or_dissertations/q524jp117
+    - title: Bachelor of Science
+      institution: University of Wisconsin-Madison
+      year: 2011
+      description:
+        - Majored in Zoology, Evolutionary Biology, and Spanish
+  
+
 - title: Academic Interests
   type: nested_list
   contents:
@@ -103,4 +94,4 @@
 - title: Other Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Trail Running, Mountain Biking, Backcountry Snowboarding, Cooking, Gardening,.
+    - <u>Hobbies:</u> Trail Running, Mountain Biking, Backcountry Snowboarding, Cooking, Gardening, Traveling, Sci-Fi, and Print Making.
