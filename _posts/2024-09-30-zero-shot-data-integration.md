@@ -2,7 +2,7 @@
 layout: post
 title: Zero Shot Data Integration
 date: 2024-08-30 17:39:00
-tags: data integration processing
+tags: data integration processing FAIR harmonization
 description: A blog post about integrating data sight unseen
 featured: true
 mermaid:
@@ -62,6 +62,15 @@ flowchart LR
 ```    
 
 Integrated datasets would receive a confidence score 0-1, 1 being extremely confident in the integration. A person would need to confirm that the datasets can be integrated. We could then setup reinforcement learning to improve model performance. 
+
+## Matching on name and distributions/values
+
+It might also be possible to integrate data blindly by using a combination of variable name and the distributions of values in the data. 
+Confidence in matches could be boosted by metadata but essentially if two datasets contain
+columns with similar names (weight vs mass) and the values have similar distributions (e.g. normally distributed data with ranges in a certain tolerance). 
+Ideally a single model would be able to handle many different data types and correctly classify
+multiple data types (dates, coordinates, strings, etc). This would require a good initial parsing algorithm and a lot of training data. 
+
 
 ## Relax the structure
 
