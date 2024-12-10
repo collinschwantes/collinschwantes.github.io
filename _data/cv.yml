@@ -9,6 +9,13 @@
 - title: Experience
   type: time_table
   contents:
+    - title: Data Scientist
+      institution: Carlson Lab and Verena Institute, Yale University
+      year: 2024-present
+      description:
+        - Support and expand Verena's open data infrastructure
+        - Develop software and a culture that facilitate open science
+        - Provide analytical support for disease ecology projects
     - title: Data Librarian
       institution: EcoHealth Alliance, New York, NY
       year: 2021-2024
