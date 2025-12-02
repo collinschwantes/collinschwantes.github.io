@@ -4,7 +4,7 @@ title: Writing a python package with Hatch and pyOpenSci
 date: 2025-03-13 17:39:00
 tags: reproducibility python
 description: Notes on writing a python package
-featured: true
+featured: false
 mermaid:
   enabled: true
   zoomable: true

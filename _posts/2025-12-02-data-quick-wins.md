@@ -1,17 +1,17 @@
 ---
 layout: post
-title: Quick wins when publishing open data
-date: 2025-12-02 17:39:00
-tags: data integration processing FAIR harmonization
-description: Simple tricks for making your open data more usable
+title: Make your open data more useable 
+date: 2025-12-02 01:39:00
+tags: data publishing fair
+description: Quick wins when publishing open data
 featured: true
 mermaid:
   enabled: true
   zoomable: true
 ---
 
-
-Making open data more useful for yourself and others may be easier than you think. Here are some quick wins you can employ with every open dataset you publish. 
+Making open data more useful for yourself and others may be easier than you think. 
+Here are some quick wins you can employ with every open dataset you publish. 
 
 1) Include metadata for your data. This may be a schema or a data dictionary. Whatever form it takes, providing definitions for the fields in your data will make them immensely more useful. It is obvious to you, the person who has been working on this project the most, what each field means, but not to the rest of us. Metadata will also give you an opportunity to think critically about what each field means in your data and how best to describe it. Most importantly, metadata will give future you a better understanding of what these data mean when you come back to them in 6 months or a year. If you can, use a controlled vocabulary to define terms in your data. 
 2) Include project metadata. Tell people who created the data, when, and how. Provide links to publications and protocols if applicable. This makes it much easier to contextualize the data and to find them via search. 

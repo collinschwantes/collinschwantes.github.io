@@ -4,7 +4,7 @@ title: Zero Shot Data Integration
 date: 2024-08-30 17:39:00
 tags: data integration processing FAIR harmonization
 description: A blog post about integrating data sight unseen
-featured: true
+featured: false
 mermaid:
   enabled: true
   zoomable: true
