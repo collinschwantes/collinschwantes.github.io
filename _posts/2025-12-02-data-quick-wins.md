@@ -32,5 +32,5 @@ Here are some quick wins you can employ with every open dataset you publish.
 ### 6. Use consistent styling in your column headers.
  `snake_case` and `camelCase` are nice because they are human and machine readable. Having inconsistent styling means users are more likely to commit typographical errors. 
 
-### 7. When applicable, use persistent digital identifiers
+### 7. When applicable, use persistent digital identifiers.
 When applicable, use persistent digital identifiers (PIDs) like DOIs, [ORCIDs](https://orcid.org/), [ROR ids](https://ror.org/) or permanent URLS when referencing outside resources. If you have a database of journal articles, include the DOIs to make referencing the articles faster.  A lot of metadata about a journal article can be extracted if you have the DOI handy. 
