@@ -46,7 +46,7 @@ For metadata see: Data dictionary in data folder (maybe you've got a datapackage
   |-- Scripts
   |-- execute_code.R
 ```
-Your project folder should contain or be able to create all the files^a^ necessary for running your analysis. 
+Your project folder should contain or be able to create all the files<sup>a</sup> necessary for running your analysis. 
 If you're code reads from or writes to a location outside the project folder, thats a problem for anyone else trying to run your code.
 
 Since everything is contained in the top project folder (e.g. `Coyote_URCLI`) its clear that is the intended working directory. All file and folder paths can then be relative to your project folder (e.g. `./R` instead of `User/Desktop/Research/Mammals/year2/code/final_final/Coyote_URCLI/R`). 
