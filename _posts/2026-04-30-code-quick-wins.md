@@ -20,9 +20,9 @@ I've already written about quick wins for sharing data [here](https://collinschw
 Lets take a look at the repo - maybe the persistent digital identifiers can be found in the code? Nope!
 The repo is a collection of R scripts that read and write data to folders outside the repo. Oh boy.  
 
-Lets learn from this author's mistakes.
+Lets learn from that author's mistakes. 
 
-1. Your project should have a readme that explains the project's aims and how to run the code
+### 1 Your project should have a readme that explains the project's aims and how to run the code
 
 A minimal example readme: 
 
@@ -36,7 +36,7 @@ This repo contains the following folders: ..... describe the folders
 For published results see: DOI.TO.PAPER
 For metadata see: Data dictionary in data folder (maybe you've got a datapackage.json file in your zenodo deposit, who knows)
 
-2. The code for your project should be self contained. 
+### 2 The code for your project should be self contained. 
 
 ```
 --| Coyote_URCLI
@@ -55,7 +55,7 @@ Since everything is contained in the top project folder (e.g. `Coyote_URCLI`) it
 
 a. If you have sensitive data or other sharing restrictions on data this Rule of thumb can't be met. But you would note that in the readme and maybe provide dummy data. 
 
-3. Your code should be documented
+### 3 Your code should be documented
 
 You don't need to use a formal documentation framework, in line comments go a long way towards communicating whats supposed to be happening in a given code chunk.
 
@@ -89,13 +89,13 @@ source("Scripts/create_figures")
 Its a simple script that loads all libraries necessary for executing the code, sources all the functions used in the scripts, tells a user what order to run the R scripts in, and gives a brief description of what each script does. 
 
 
-4. Run the code in a clean environment
+### 4 Run the code in a clean environment
 
 Before sharing your code, make sure your code runs from a clean session - this is especially important for R users
 where objects can persist between session in the `.Rdata` file. 
 
 
-5. Run the code on NOT your computer 
+### 5 Run the code on NOT your computer 
 
 Send your code to someone else and have them run in it on their machine. 
 This can be as simple as zipping the project folder and passing it over to another person's computer. 
