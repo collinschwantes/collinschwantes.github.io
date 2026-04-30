@@ -11,7 +11,7 @@ mermaid:
 ---
 
 Today I came across a paper on range shifts in a common genus of birds that had a full data and code sharing section.
-It made my little data librarian heart pitter patter to see such a complete accounting of where data came and where the code to run the paper's analysis lives. 
+It made my little data librarian heart pitter patter to see such a complete accounting of where data came from and where the code to run the paper's analysis lives. 
 
 Then I looked at the links. GBIF data can be obtained from GBIF.org. IUCN redlist data can be downloaded at IUCN.org. 
 Those are big websites my friend, thats like saying I can be found in North America. 
